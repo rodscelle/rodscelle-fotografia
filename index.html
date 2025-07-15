@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rodscelle Fotografia</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -56,8 +63,55 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
+    .gallery img {
+  transition: transform 0.3s ease;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.swiper {
+  width: 90%;
+  height: auto;
+  padding-bottom: 50px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
   </style>
 </head>
+<script>
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('touchstart', () => {
+      img.style.transform = 'scale(1.05)';
+    });
+    img.addEventListener('touchend', () => {
+      img.style.transform = 'scale(1)';
+    });
+  });
+</script>
 <body>
   <header>
     <h1>Rodscelle Fotografia</h1>
@@ -68,26 +122,97 @@
     <p>Ensaios infantis, aniversários, batizados, casamentos e muito mais.</p>
   </section>
 
-  <section class="gallery">
-    <img src="mary-ricardo-casamento.jpg" alt="Casamento Maria & Ricardo">
-    <img src="maryana-casamento.jpg" alt="Casamento Maria">
-    <img src="andrew-batizado.jpg" alt="Batizado do Andrew">
-    <img src="batizado-andrew.jpg" alt="Batizado do Andrew">
-    <img src="ani" alt="1 Aninho do Andrew">
-    <img src="DSC_0079.jpg" alt="1 Aninho do Andrew">
-    <img src="maya-smash.jpg" alt="Smash the Cake da Maya">
-    <img src="smash-maya.jpg" alt="Smash the Cake da Maya">
-    <img src=".jpg" alt="">
-  </section>
+  <!-- Carrossel Swiper -->
+<section class="gallery">
+  <div class="swiper">
+    <div class="swiper-wrapper">
 
-  <section class="contact">
+      <div class="swiper-slide">
+        <img src="mary-ricardo-casamento.jpg" alt="Casamento Maria & Ricardo">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="maryana-casamento.jpg" alt="Casamento Maria">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="andrew-batizado.jpg" alt="Batizado do Andrew">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="batizado-andrew.jpg" alt="Batizado do Andrew">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="ani.jpg" alt="1 Aninho do Andrew">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="DSC_0079.jpg" alt="1 Aninho do Andrew">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="maya-smash.jpg" alt="Smash the Cake da Maya">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="smash-maya.jpg" alt="Smash the Cake da Maya">
+      </div>
+
+    </div>
+
+    <!-- Controles -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+<section class="contact">
     <h2>Entre em contato</h2>
+    <a href="https://wa.me/5592984961644" target="_blank" class="whatsapp-float">
+  📷 Fale comigo!
+</a>
+
     <a href="https://wa.me/5592984961644" target="_blank">Fale no WhatsApp</a>
     <a href="https://www.instagram.com/rodscelle/" target="_blank">Ver no Instagram</a>
   </section>
 
+
   <footer>
     &copy; 2025 Rodscelle Fotografia. Todos os direitos reservados.
   </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Inicialização do Swiper -->
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    grabCursor: true,
+    spaceBetween: 20,
+    slidesPerView: 1,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      }
+    }
+  });
+</script>
 </body>
 </html>
